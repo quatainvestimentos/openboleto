@@ -55,11 +55,11 @@
         </td>
     </tr>
     <tr>
-        <td width="110" colspan="2">
+        <td width="110" colspan="1">
             <div class="titulo">Data do documento</div>
             <div class="conteudo"><?php echo $data_documento ?></div>
         </td>
-        <td width="120" colspan="2">
+        <td width="120" colspan="3">
             <div class="titulo">Nº documento</div>
             <div class="conteudo"><?php echo $numero_documento ?></div>
         </td>
@@ -82,23 +82,23 @@
     </tr>
     <tr>
         <?php if (!$esconde_uso_banco) : ?>
-            <td<?php if (!$mostra_cip) : ?> colspan="2"<?php endif ?>>
+            <td<?php //if (!$mostra_cip) : ?> <?php //endif ?>>
                 <div class="titulo">Uso do banco</div>
                 <div class="conteudo"><?php echo $uso_banco ?></div>
             </td>
         <?php endif; ?>
 
-        <?php if ($mostra_cip) : ?>
+        <?php //if ($mostra_cip) : ?>
             <!-- Campo exclusivo do Bradesco -->
-            <td width="20">
-                <div class="titulo">CIP</div>
-                <div class="conteudo"><?php echo $cip ?></div>
-            </td>
-        <?php endif ?>
+            <!--<td width="20">
+                <div class="titulo"></div>
+                <div class="conteudo"><?php //echo $cip ?></div>
+            </td>-->
+        <?php //endif ?>
 
-        <td<?php if ($esconde_uso_banco) : ?> colspan="3"<?php endif; ?>>
+        <td<?php //if ($esconde_uso_banco) : ?> <?php //endif; ?>>
             <div class="titulo">Carteira</div>
-            <div class="conteudo"><?php echo $carteira ?></div>
+            <div class="conteudo"><?php echo str_pad($carteira, 3, '0', STR_PAD_LEFT); ?></div>
         </td>
         <td width="35">
             <div class="titulo">Espécie</div>
@@ -108,11 +108,11 @@
             <div class="titulo">Quantidade</div>
             <div class="conteudo"><?php echo $quantidade ?></div>
         </td>
-        <td width="110">
+        <td width="110" colspan="2">
             <div class="titulo">Valor</div>
-            <div class="conteudo"><?php echo $valor_unitario ?></div>
+            <div class="conteudo"></div>
         </td>
-        <td>
+        <td colspan="2">
             <div class="titulo">(=) Valor do Documento</div>
             <div class="conteudo rtl"><?php echo $valor_documento ?></div>
         </td>
@@ -175,13 +175,22 @@
 
         </td>
         <td class="noleftborder">
-            <div class="titulo" style="margin-top: 50px">Cód. Baixa</div>
+            
         </td>
+        <tr>
+        	<td colspan="8" style="border-top: none">
+            	<div class="titulo">Sacador/Avalista<br> 
+            		<div class="conteudo sacador" style="margin-left: 0px"><?php echo $sacador_avalista; ?></div>
+            		<div class="titulo" style="float: right; margin-right: 130px">Cód. Baixa</div>
+            	</div>
+            	
+       		</td>
+        </tr>
     </tr>
 
     <tr>
         <td colspan="6" class="noleftborder">
-            <div class="titulo">Sacador/Avalista <div class="conteudo sacador"><?php echo $sacador_avalista; ?></div></div>
+            <!-- <div class="titulo">Sacador/Avalista <div class="conteudo sacador"><?php //echo $sacador_avalista; ?></div></div>-->
         </td>
         <td colspan="2" class="norightborder noleftborder">
             <div class="conteudo noborder rtl">Autenticação mecânica - Ficha de Compensação</div>
