@@ -1,9 +1,9 @@
 {
-    "name": "quatainvestimentos/openboleto",
+    "name": "quataopen/openboleto",
     "type": "library",
     "description": "Biblioteca para geração de boletos bancários baseado no kriansa/openboleto e modificado pela Quatá Investimentos.",
     "keywords": ["boleto", "boleto bancario"],
-    "homepage": "http://lab.qtserver.com.br/quatainvestimentos/openboleto",
+    "homepage": "http://lab.qtserver.com.br/quataopen/openboleto",
     "license": "MIT",
     "require": {
         "php": ">=5.3.0"
