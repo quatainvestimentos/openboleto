@@ -55,21 +55,6 @@
                 <div class="linha-pontilhada" style="margin-bottom: 20px;">Recibo do sacado</div>
             </div>
 
-            <div class="info-empresa noprint">
-                <?php if ($logotipo) : ?>
-                    <div style="display: inline-block;">
-                        <img alt="logotipo" src="<?php echo $logotipo; ?>" />
-                    </div>
-                <?php endif ?>
-                <div style="display: inline-block; vertical-align: super;">
-                    <div><strong><?php echo $cedente; ?></strong></div>
-                    <div><?php echo $cedente_cpf_cnpj; ?></div>
-                    <div><?php echo $cedente_endereco1; ?></div>
-                    <div><?php echo $cedente_endereco2; ?></div>
-                </div>
-            </div>
-            <br>
-
             <table class="table-boleto" cellpadding="0" cellspacing="0" border="0">
                 <tbody>
                     <tr>
@@ -180,10 +165,6 @@
             <!-- Ficha de compensação -->
             <?php include('partials/ficha-de-compensacao.phtml') ?>
 
-        </div>  
-        
-        <div class="noprint" style="width: 666px; margin: 0px auto 0px auto; height:70px">
-            <button class="noprint btn-primary" onclick="javascript:window.print()" style="margin-top: 10px; cursor: pointer; padding: 10px">Imprimir / Salvar em PDF</button>
         </div>
         
         <div class="noprint linha-pontilhada"></div>
