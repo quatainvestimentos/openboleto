@@ -128,14 +128,30 @@
     </tr>
     <tr>
         <td colspan="7" rowspan="4" class="notopborder">
-            <div class="conteudo"><?php echo $instrucoes[0]; ?>
-            <div class="conteudo"><?php echo $instrucoes[1]; ?></div>
-            <div class="conteudo"><?php echo $instrucoes[2]; ?></div>
-            <div class="conteudo"><?php echo $instrucoes[3]; ?></div>
-            <div class="conteudo"><?php echo $instrucoes[4]; ?></div>
-            <div class="conteudo"><?php echo $instrucoes[5]; ?></div>
-            <div class="conteudo"><?php echo $instrucoes[6]; ?></div>
-            <div class="conteudo"><?php echo $instrucoes[7]; ?></div>
+            <?php if(isset($instrucoes[0]) && !empty($instrucoes[0])){ ?>
+                <div class="conteudo"><?php echo $instrucoes[0]; ?>
+            <?php } ?>
+            <?php if(isset($instrucoes[1]) && !empty($instrucoes[1])){ ?>
+                <div class="conteudo"><?php echo $instrucoes[1]; ?></div>
+            <?php } ?>
+            <?php if(isset($instrucoes[2]) && !empty($instrucoes[2])){ ?>
+                <div class="conteudo"><?php echo $instrucoes[2]; ?></div>
+            <?php } ?>
+            <?php if(isset($instrucoes[3]) && !empty($instrucoes[3])){ ?>
+                <div class="conteudo"><?php echo $instrucoes[3]; ?></div>
+            <?php } ?>
+            <?php if(isset($instrucoes[4]) && !empty($instrucoes[4])){ ?>
+                <div class="conteudo"><?php echo $instrucoes[4]; ?></div>
+            <?php } ?>
+            <?php if(isset($instrucoes[5]) && !empty($instrucoes[5])){ ?>
+                <div class="conteudo"><?php echo $instrucoes[5]; ?></div>
+            <?php } ?>
+            <?php if(isset($instrucoes[6]) && !empty($instrucoes[6])){ ?>
+                <div class="conteudo"><?php echo $instrucoes[6]; ?></div>
+            <?php } ?>
+            <?php if(isset($instrucoes[7]) && !empty($instrucoes[7])){ ?>
+                <div class="conteudo"><?php echo $instrucoes[7]; ?></div>
+            <?php } ?>
         </td>
         <td>
             <div class="titulo">(-) Outras deduções</div>
