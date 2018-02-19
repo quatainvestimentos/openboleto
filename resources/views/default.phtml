@@ -164,13 +164,17 @@
                     </tr>
                     <tr>
                         <td colspan="5" class="notopborder">
-                            <?php if(isset($demonstrativo[0]) && !empty($demonstrativo[0])){ ?>
+                            <?php if(isset($demonstrativo[3]) && !empty($demonstrativo[3])){ ?>
                             <div class="conteudo"><?php echo $demonstrativo[3] ?></div>
                             <?php } ?>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="notopborder bottomborder"><div style="margin-bottom: 10px;" class="conteudo"><?php echo $demonstrativo[4] ?></div></td>
+                        <td colspan="5" class="notopborder bottomborder">
+                            <?php if(isset($demonstrativo[3]) && !empty($demonstrativo[3])){ ?>
+                            <div style="margin-bottom: 10px;" class="conteudo"><?php echo $demonstrativo[4] ?></div>
+                            <?php } ?>
+                        </td>
                     </tr>
                 </tbody>
             </table>
