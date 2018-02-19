@@ -141,24 +141,34 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4"><div style="margin-top: 10px" class="conteudo"><?php echo $demonstrativo[0] ?></div></td>
+                        <td colspan="4">
+                            <?php if(isset($demonstrativo[0]) && !empty($demonstrativo[0])){ ?>
+                            <div style="margin-top: 10px" class="conteudo"><?php echo $demonstrativo[0] ?></div>
+                            <?php } ?>
+                        </td>
                         <td class="noleftborder"><div class="titulo">Autenticação mecânica</div></td>
                     </tr>
-                    <?php if(isset($demonstrativo[1]) && !empty($demonstrativo[1])){ ?>
                     <tr>
-                        <td colspan="5" class="notopborder"><div class="conteudo"><?php echo $demonstrativo[1] ?></div></td>
+                        <td colspan="5" class="notopborder">
+                            <?php if(isset($demonstrativo[1]) && !empty($demonstrativo[1])){ ?>
+                            <div class="conteudo"><?php echo $demonstrativo[1] ?></div>
+                            <?php } ?>
+                        </td>
                     </tr>
-                    <?php }
-                    if(isset($demonstrativo[2]) && !empty($demonstrativo[2])){ ?>
                     <tr>
-                        <td colspan="5" class="notopborder"><div class="conteudo"><?php echo $demonstrativo[2] ?></div></td>
+                        <td colspan="5" class="notopborder">
+                            <?php if(isset($demonstrativo[2]) && !empty($demonstrativo[2])){ ?>
+                            <div class="conteudo"><?php echo $demonstrativo[2] ?></div>
+                            <?php } ?>
+                            </td>
                     </tr>
-                    <?php }
-                    if(isset($demonstrativo[3]) && !empty($demonstrativo[3])){ ?>
                     <tr>
-                        <td colspan="5" class="notopborder"><div class="conteudo"><?php echo $demonstrativo[3] ?></div></td>
+                        <td colspan="5" class="notopborder">
+                            <?php if(isset($demonstrativo[0]) && !empty($demonstrativo[0])){ ?>
+                            <div class="conteudo"><?php echo $demonstrativo[3] ?></div>
+                            <?php } ?>
+                        </td>
                     </tr>
-                    <?php } ?>
                     <tr>
                         <td colspan="5" class="notopborder bottomborder"><div style="margin-bottom: 10px;" class="conteudo"><?php echo $demonstrativo[4] ?></div></td>
                     </tr>
