@@ -61,10 +61,6 @@ body{
 
 .table-boleto .conteudo {
     font: bold 10px Arial;
-    min-height: 13px;
-}
-
-.conteudo-lateral {
     height: 13px;
 }
 
