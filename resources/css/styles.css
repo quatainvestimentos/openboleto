@@ -27,13 +27,20 @@
     }
 }
 
+html {
+    -webkit-transform: scale(0.7);
+    position:absolute;
+    left:-50px;
+    top:-100px;
+}
+
 body{
     background-color: #ffffff;
     margin-right: 0;
 }
 
 .table-boleto {
-    font: 9px Arial, Helvetica, sans-serif;
+    font: 9px sans-serif;
     width: 666px;
 }
 
@@ -52,7 +59,7 @@ body{
 
 .linha-pontilhada {
     color: #000033;
-    font: 9px Arial, Helvetica, sans-serif;
+    font: 9px sans-serif;
     width: 100%;
     border-bottom: 1px dashed #000;
     text-align: right;
@@ -60,7 +67,7 @@ body{
 }
 
 .table-boleto .conteudo {
-    font: bold 10px Arial, Helvetica, sans-serif;
+    font: bold 10px sans-serif;
     min-height: 13px;
 }
 
@@ -112,7 +119,7 @@ body{
 }
 
 .table-boleto .codbanco {
-    font: bold 20px Arial, Helvetica, sans-serif;
+    font: bold 20px sans-serif;
     padding: 1px 5px;
     display: inline;
     border-left: 2px solid #000;
@@ -122,7 +129,7 @@ body{
 }
 
 .table-boleto .linha-digitavel {
-    font: bold 14px Arial, Helvetica, sans-serif;
+    font: bold 14px sans-serif;
     display: inline-block;
     width: 406px;
     text-align: right;
@@ -133,17 +140,22 @@ body{
 }
 
 .info {
-    font: 11px Arial, Helvetica, sans-serif;
+    font: 11px sans-serif;
 }
 
 .info-empresa {
-    font: 11px Arial, Helvetica, sans-serif;
+    font: 11px sans-serif;
 }
 
 .header {
-    font: bold 13px Arial, Helvetica, sans-serif;
+    font: bold 13px sans-serif;
     display: block;
     margin: 4px;
+}
+
+.infoprint {
+    font-family:sans-serif;
+    font-size:0.6rem;
 }
 
 .barcode {
