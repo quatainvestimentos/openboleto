@@ -28,10 +28,10 @@
 }
 
 html {
-    -webkit-transform: scale(0.7);
+    -webkit-transform: scale(1.2);
     position:absolute;
-    left:-50px;
-    top:-100px;
+    top:100px;
+    left:100px;
 }
 
 body{
