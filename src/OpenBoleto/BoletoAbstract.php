@@ -1222,6 +1222,7 @@ abstract class BoletoAbstract
             'uso_banco' => $this->getUsoBanco(),
             'codigo_barras' => $this->getImagemCodigoDeBarras(),
             'resource_path' => $this->getResourcePath(),
+            'esconde_uso_banco' => false,
         ));
 
         // Override view variables when rendering
