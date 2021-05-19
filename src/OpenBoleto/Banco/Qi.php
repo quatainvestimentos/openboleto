@@ -30,27 +30,21 @@ namespace OpenBoleto\Banco;
 use OpenBoleto\BoletoAbstract;
 
 /**
- * Classe boleto Bradesco S/A.
- *
- * @package    OpenBoleto
- * @author     Daniel Garajau <http://github.com/kriansa>
- * @copyright  Copyright (c) 2013 Estrada Virtual (http://www.estradavirtual.com.br)
- * @license    MIT License
- * @version    1.0
+ * Classe boleto QI SDC .
  */
-class Bradesco extends BoletoAbstract
+class Qi extends BoletoAbstract
 {
     /**
      * Código do banco
      * @var string
      */
-    protected $codigoBanco = '237';
+    protected $codigoBanco = '329';
 
     /**
      * Localização do logotipo do banco, referente ao diretório de imagens
      * @var string
      */
-    protected $logoBanco = 'bradesco.jpg';
+    protected $logoBanco = 'logo_qi_scd.jpg';
 
     /**
      * De acordo com o ramo de atividade, poderão ser utilizadas uma das siglas: DM-
@@ -65,7 +59,7 @@ class Bradesco extends BoletoAbstract
      * Define as carteiras disponíveis para este banco
      * @var array
      */
-    protected $carteiras = array('3', '4', '6', '9', '19', '5', '16');
+    protected $carteiras = array('1','3', '4', '6', '9', '19', '5', '16');
 
     /**
      * Trata-se de código utilizado para identificar mensagens especificas ao cedente, sendo
@@ -93,14 +87,11 @@ class Bradesco extends BoletoAbstract
      */
     public function getCampoLivre()
     {
-        if ($this->codigoBanco == '237') {
-            return static::zeroFillBradesco($this->getAgencia(), 4) .
-                static::zeroFillBradesco($this->getCarteira(), 2) .
-                static::zeroFillBradesco($this->getNossoNumero(), 11) .
-                static::zeroFillBradesco($this->getConta(), 7) .
-                '0';
-        }
-        return  '0';
+        return static::zeroFill($this->getAgencia(), 4) .
+            static::zeroFill($this->getCarteira(), 2) .
+            static::zeroFill($this->getNossoNumero(), 11) .
+            static::zeroFill($this->getConta(), 7) .
+            '0';
     }
 
     /**

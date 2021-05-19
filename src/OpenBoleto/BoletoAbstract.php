@@ -282,6 +282,7 @@ abstract class BoletoAbstract
      */
     public function  __construct($params = array())
     {
+
         foreach ($params as $param => $value)
         {
             if (method_exists($this, 'set' . $param)) {
@@ -1337,6 +1338,61 @@ abstract class BoletoAbstract
     }
 
     /**
+     * Retorna a linha digitável do boleto para o banco QI
+     *
+     * @return string
+     */
+    public function getLinhaDigitavelQI()
+    {
+        $chave = $this->getCampoLivre();
+
+        // Break down febraban positions 20 to 44 into 3 blocks of 5, 10 and 10
+        // characters each.
+        $blocks = array(
+            '20-24' => substr($chave, 0, 5),
+            '25-34' => substr($chave, 5, 10),
+            '35-44' => substr($chave, 15, 10),
+        );
+
+        // Concatenates bankCode + currencyCode + first block of 5 characters and
+        // calculates its check digit for part1.
+        $check_digit = static::modulo10($this->getCodigoBanco() . $this->getMoeda() . $blocks['20-24']);
+
+        // Shift in a dot on block 20-24 (5 characters) at its 2nd position.
+        $blocks['20-24'] = substr_replace($blocks['20-24'], '.', 1, 0);
+
+        // Concatenates bankCode + currencyCode + first block of 5 characters +
+        // checkDigit.
+        $part1 = $this->getCodigoBanco(). $this->getMoeda() . $blocks['20-24'] . $check_digit;
+
+        // Calculates part2 check digit from 2nd block of 10 characters.
+        $check_digit = static::modulo10($blocks['25-34']);
+
+
+        $part2 = $blocks['25-34'] . $check_digit;
+
+
+        // Shift in a dot at its 6th position.
+        $part2 = substr_replace($part2, '.', 5, 0);
+
+        // Calculates part3 check digit from 3rd block of 10 characters.
+        $check_digit = static::modulo10($blocks['35-44']);
+
+        // As part2, we do the same process again for part3.
+        $part3 = $blocks['35-44'] . $check_digit;
+        $part3 = substr_replace($part3, '.', 5, 0);
+
+        // Check digit for the human readable number.
+        $cd = $this->getDigitoVerificador();
+
+        // Put part4 together.
+        $part4  = $this->getFatorVencimento() . $this->getValorZeroFill();
+
+        // Now put everything together.
+        return "$part1 $part2 $part3 $cd $part4";
+    }
+
+    /**
      * Retorna a string contendo as imagens do código de barras, segundo o padrão Febraban
      *
      * @return string
@@ -1424,6 +1480,7 @@ abstract class BoletoAbstract
      */
     protected function getFatorVencimento()
     {
+
         if (!$this->getContraApresentacao()) {
             $date = new DateTime('1997-10-07');
             return $date->diff($this->getDataVencimento())->days;
@@ -1440,7 +1497,7 @@ abstract class BoletoAbstract
     protected function getDigitoVerificador()
     {
         $num = self::zeroFill($this->getCodigoBanco(), 4) . $this->getMoeda() . $this->getFatorVencimento() . $this->getValorZeroFill() . $this->getCampoLivre();
-
+        //validar para modulo11 | valor original = modulo11
         $modulo = static::modulo11($num);
         if ($modulo['resto'] == 0 || $modulo['resto'] == 1 || $modulo['resto'] == 10) {
             $dv = 1;
@@ -1452,7 +1509,26 @@ abstract class BoletoAbstract
     }
 
     /**
-     * Helper para Zerofill (0 à esqueda).
+     * Helper para Zerofill (0 à esqueda), para o Banco Bradesco
+     * O valor não deve ter mais caracteres do que o número de dígitos especificados
+     *
+     * @param int $valor
+     * @param int $digitos
+     * @return string
+     * @throws Exception
+     */
+    protected static function zeroFillBradesco($valor, $digitos)
+    {
+        // TODO: Retirar isso daqui, e criar um método para validar os dados
+        if (strlen($valor) > $digitos) {
+            $valor = substr($valor, -4);
+        }
+
+        return str_pad($valor, $digitos, '0', STR_PAD_LEFT);
+    }
+
+    /**
+     * Helper para Zerofill (0 à esqueda), para o Banco Qi
      * O valor não deve ter mais caracteres do que o número de dígitos especificados
      *
      * @param int $valor
@@ -1517,6 +1593,7 @@ abstract class BoletoAbstract
     {
         $numtotal10 = 0;
         $fator = 2;
+       // var_dump($num)."<br>";
 
         //  Separacao dos numeros.
         for ($i = strlen($num); $i > 0; $i--) {
@@ -1524,9 +1601,11 @@ abstract class BoletoAbstract
             $numeros[$i] = substr($num,$i-1,1);
             //  Efetua multiplicacao do numero pelo (falor 10).
             $temp = $numeros[$i] * $fator;
+           // var_dump($fator.' '.'X'.' '.$numeros[$i].' '.'='.' '.$temp)."<br>";
             $temp0=0;
             foreach (preg_split('// ',$temp,-1,PREG_SPLIT_NO_EMPTY) as $v){ $temp0+=$v; }
             $parcial10[$i] = $temp0; // $numeros[$i] * $fator;
+          //  var_dump($parcial10[$i])."<br>";
             //  Monta sequencia para soma dos digitos no (modulo 10).
             $numtotal10 += $parcial10[$i];
             if ($fator == 2) {
@@ -1537,13 +1616,16 @@ abstract class BoletoAbstract
                 $fator = 2;
             }
         }
+       // var_dump($numtotal10 )."<br>";
 
         $remainder  = $numtotal10 % 10;
+       // var_dump($remainder )."<br>";
         $digito = 10 - $remainder;
 
         // Make it zero if check digit is 10.
         $digito = ($digito == 10) ? 0 : $digito;
-
+       // var_dump($digito)."<br>";
+       // exit();
         return $digito;
     }
 
