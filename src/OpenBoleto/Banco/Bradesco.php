@@ -53,6 +53,12 @@ class Bradesco extends BoletoAbstract
     protected $logoBanco = 'bradesco.jpg';
 
     /**
+     * Linha de local de pagamento
+     * @var string
+     */
+    protected $localPagamento = 'Pagável preferencialmente na Rede Bradesco ou Bradesco Expresso.';
+
+    /**
      * De acordo com o ramo de atividade, poderão ser utilizadas uma das siglas: DM-
      * Duplicata Mercantil, NP-Nota Promissória, NS-Nota de Seguro, CS-Cobrança
      * Seriada, REC-Recibo, LC-Letras de Câmbio, ND-Nota de Débito, DS-Duplicata de

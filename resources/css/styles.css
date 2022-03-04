@@ -29,6 +29,7 @@
 
 html {
     -webkit-transform: scale(1.2);
+    transform: scale(1.2);
     position:absolute;
     top:120px;
     left:100px;
@@ -104,14 +105,14 @@ body{
     text-align: right;
 }
 
+.table-boleto .logocontainer {
+    width: 200px;
+    display: inline-block;
+}
+
 .table-boleto .logobanco {
     display: inline-block;
     max-width: 150px;
-}
-
-.table-boleto .logocontainer {
-    width: 257px;
-    display: inline-block;
 }
 
 .table-boleto .logobanco img {
@@ -119,13 +120,13 @@ body{
 }
 
 .table-boleto .codbanco {
-    font: bold 20px sans-serif;
+    font: bold 18px sans-serif;
     padding: 1px 5px;
     display: inline;
     border-left: 2px solid #000;
     border-right: 2px solid #000;
-    width: 51px;
-    margin-left: 25px;
+    width: 50px;
+    margin-left: 10px;
 }
 
 .table-boleto .linha-digitavel {
