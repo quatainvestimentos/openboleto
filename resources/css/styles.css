@@ -33,16 +33,19 @@ html {
     position:absolute;
     top:120px;
     left:100px;
+    margin: 0;
+    padding: 0;
 }
 
 body{
     background-color: #ffffff;
-    margin-right: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .table-boleto {
     font: 9px sans-serif;
-    width: 666px;
+    width: 100%;
 }
 
 .table-boleto td {
@@ -56,6 +59,8 @@ body{
 
 .table-boleto .titulo {
     color: #000033;
+    display: block;
+    margin-bottom: 3px;
 }
 
 .linha-pontilhada {
@@ -70,6 +75,7 @@ body{
 .table-boleto .conteudo {
     font: bold 10px sans-serif;
     min-height: 13px;
+    display: block;
 }
 
 .table-boleto .sacador {
@@ -106,33 +112,35 @@ body{
 }
 
 .table-boleto .logocontainer {
-    width: 200px;
     display: inline-block;
 }
 
 .table-boleto .logobanco {
     display: inline-block;
-    max-width: 150px;
+    width: 150px;
+    height: auto;
 }
 
 .table-boleto .logobanco img {
     margin-bottom: -5px;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .table-boleto .codbanco {
     font: bold 18px sans-serif;
     padding: 1px 5px;
-    display: inline;
+    display: inline-block;
     border-left: 2px solid #000;
     border-right: 2px solid #000;
-    width: 50px;
-    margin-left: 10px;
+    text-align: center;
+    margin: 0 10px;
 }
 
 .table-boleto .linha-digitavel {
     font: bold 14px sans-serif;
     display: inline-block;
-    width: 406px;
     text-align: right;
 }
 
