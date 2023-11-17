@@ -89,18 +89,11 @@ class Bradesco extends BoletoAbstract
      */
     protected function gerarNossoNumero()
     {
+        $numero = self::zeroFill($this->getSequencial(), 10);
+        $dv = static::modulo11($numero);
+        $numero .= '-' . $dv['digito'];
 
-        return $this->getSequencial();
-        
-        // Não funcionou porque retornava o valor junto com o DV
-        // O DV é calculado/validado num outro local
-
-        // $numero = self::zeroFill($this->getSequencial(), 10);
-        // $dv = static::modulo11($numero);
-        // $numero .= '-' . $dv['digito'];
-
-        // return $numero;
-
+        return $numero;
     }
 
     /**
