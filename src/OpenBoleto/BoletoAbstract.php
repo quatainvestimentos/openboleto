@@ -1475,6 +1475,7 @@ abstract class BoletoAbstract
     /**
      * Retorna o número de dias de 07/10/1997 até a data de vencimento do boleto
      * Ou 0000 caso não tenha data de vencimento (contra-apresentação)
+     * Atualizado o fator de vencimento conforme regra do Bradesco para 2025-02-22
      *
      * @return string
      */
@@ -1482,8 +1483,15 @@ abstract class BoletoAbstract
     {
 
         if (!$this->getContraApresentacao()) {
-            $date = new DateTime('1997-10-07');
-            return $date->diff($this->getDataVencimento())->days;
+            $dataBaseAntiga = new DateTime('1997-10-07');
+            $dataBaseNova = new DateTime('2025-02-22');
+            $dataVencimento = $this->getDataVencimento();
+    
+            if ($dataVencimento < $dataBaseNova) {
+                return $dataBaseAntiga->diff($dataVencimento)->days;
+            } else {
+                return 1000 + $dataBaseNova->diff($dataVencimento)->days;
+            }
         } else {
             return '0000';
         }
